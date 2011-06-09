@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+  before(:each) do
+    @base_title = "Traveli"
+  end
+
 describe PagesController do
   render_views
   describe "GET 'home'" do
@@ -9,7 +13,7 @@ describe PagesController do
     end
     it "should have the right title" do
       get 'home'
-      response.should have_selector("title", :content => "Traveli | Because travelling teaches you a lot")
+      response.should have_selector("title", :content => @base_title + " | Because travelling teaches you a lot")
     end
   end
 
@@ -20,7 +24,7 @@ describe PagesController do
     end
     it "should have the right title" do
       get 'about'
-      response.should have_selector("title", :content => "Traveli | About")
+      response.should have_selector("title", :content => @base_title + " | About")
     end
   end
 
