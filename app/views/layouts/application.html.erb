@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
@@ -9,7 +10,20 @@
    <div class="container">
      <%= render 'layouts/header' %>
       <section class="round">
-        <%= yield %>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+ <div id="fb-root"></div>
+<script>
+         FB.init({ 
+            appId:110895615683537, cookie:true, 
+            status:true, xfbml:true 
+         });
+</script>
+<fb:registration
+            fields="[{'name':'name'}, {'name':'email'},
+            {'name':'favorite_car','description':'What is your favorite car?',
+            'type':'text'}]" redirect-uri="http://traveli.heroku.com">
+    </fb:registration>
+	<%= yield %>
       </section>
       <%= render 'layouts/footer' %>
     </div>
