@@ -5,38 +5,12 @@
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
-   <script language='JavaScript' type='text/javascript' src='/javascripts/jquery-1.4.4.min.js'></script>
-    <script type='text/javascript'>
-function initialize() {
- $.getScript(document.location.protocol + '//connect.facebook.net/en_US/all.js');
-}
-
-window.fbAsyncInit = function() {
- FB.init({
-  appId   : 110895615683537, // replaced here by my App ID
-  session : {},
-  status  : true,
-  cookie  : true,
-  xfbml   : true
- });
- FB.Event.subscribe('auth.login', function() {
-  window.location.href = '/about';
- });
-};
-</script>
+    <%= javascript_include_tag :all %>
   </head>
   <body onload='initialize();'>
    <div class="container">
      <%= render 'layouts/header' %>
       <section class="round">
-<span id='fb-root'></span>
-<fb:registration 
-    fields='[{"name":"name"},{"name":"first_name"},{"name":"last_name"},{"name":"email"},{"name":"location"},{"name":"gender"},{"name":"password","view":"not_prefilled"},{"name":"captcha"}]' 
-    redirect-uri='http://traveli.heroku.com'
-    width='600'
-    fb_only='false'
-    allowTransparency='true'>
-</fb:registration>
 	<%= yield %>
       </section>
       <%= render 'layouts/footer' %>
